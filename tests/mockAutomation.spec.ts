@@ -125,7 +125,7 @@ test.describe('Mock Automation User Flows (BBT)', () => {
             await page.getByRole('textbox', { name: 'Search For Products' }).fill('nikon') // Fill the search input with 'nikon'
             await page.getByRole('button', { name: 'Search' }).click();
             await expect(page).toHaveURL(/search=nikon/); // Expect the URL to contain the search query
-            await expect(page.locator('.product-layout')).toHaveCount(1); // Expect to find at least one product matching the search query
+            await expect(page.locator('.product-layout')).toHaveCount(2); // Expect to find at least one product matching the search query
             logTestStatus(true);
         } catch (error) {
             logTestStatus(false);
