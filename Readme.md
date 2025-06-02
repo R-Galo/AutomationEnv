@@ -41,82 +41,88 @@ Ensure your Windows 11 machine has the following installed:
    - Download: [VS Code](https://code.visualstudio.com/download)
    - (Optional) Install Playwright Test Extension for VS Code.
 
+3. **Git Installed**
+    - Download: [Git] (https://git-scm.com/downloads)
+
 ## Project Setup Instructions
-### **1️⃣ Create a New Project**
+### **1️⃣ Pull Project From Github**
     ```bash
-    mkdir PlaywrightEcommerceDemo #You can choose your own project name
-    cd PlaywrightEcommerceDemo
+    mkdir YourProjectFolderName #Creating a folder to pull the project from git. You can choose your own project name
+    cd YourProjectFolderName
+    git clone https://github.com/R-Galo/AutomationEnv.git
+    cd AutomationEnv
     code .
+    ```
 
-    (Alternatively, open the folder in VS Code manually.)
+    (Alternatively, create and open the folder in VS Code manually.)
 
-    2️⃣ Initialize Playwright
+### **2️⃣ Install Dependencies**
     ```bash
-    npm init playwright@latest
-    Select TypeScript when prompted.
-    Accept default paths (tests folder).
-    Install Playwright browsers (Chromium, Firefox, WebKit).
+    npm install
+    ```
 
-    3️⃣ Create Test Files
-    Inside the tests/ folder, create:
+   - Select TypeScript when prompted.
+   - Accept default paths (tests folder).
+   - Install Playwright browsers (Chromium, Firefox, WebKit).
 
-    touch tests/ecommerce.spec.ts
-    Copy and paste test cases into this file.
+### **3️⃣ Run Playwright Tests**
+📌 Headless Mode (Fast execution)
+```bash
+npx playwright test
+```
 
-    4️⃣ Run Playwright Tests
-    📌 Headless Mode (Fast execution)
-    ```bash
-    npx playwright test
+📌 Headed Mode (See browser interactions)
+```bash
+npx playwright test --headed
+```
 
-    📌 Headed Mode (See browser interactions)
-    ```bash
-    npx playwright test --headed
+📌 Run a Specific Test File
+```bash
+npx playwright test tests/ecommerce.spec.ts --headed
+```
 
-    📌 Run a Specific Test File
-    ```bash
-    npx playwright test tests/ecommerce.spec.ts --headed
+📌 Run in Debug Mode (Interactive Testing UI)
+```bash
+npx playwright test --ui
+```
 
-    📌 Run in Debug Mode (Interactive Testing UI)
-    ```bash
-    npx playwright test --ui
+## Test Cases Overview
+## This project includes 10 automated UI test cases covering essential functionalities:
 
-Test Cases Overview
-This project includes 10+ automated UI test cases covering essential functionalities:
+## Test Case ID	Description
+- TC001	Verify page title is correct
+- TC002	Validate login page elements visibility
+- TC003	Successfully log in with valid credentials
+- TC004	Display error message for invalid password
+- TC005	Display error message for invalid email
+- TC006	Navigate to the registration page
+- TC007	Display error for missing first name during registration
+- TC008	Successfully search for a product
+- TC009	Add a product to the shopping cart
+- TC010	Navigate to "Contact Us" page
+- Each test case ensures reliable automation and validates the UI behavior from a user perspective.
 
-Test Case ID	Description
-TC001	Verify page title is correct
-TC002	Validate login page elements visibility
-TC003	Successfully log in with valid credentials
-TC004	Display error message for invalid password
-TC005	Display error message for invalid email
-TC006	Navigate to the registration page
-TC007	Display error for missing first name during registration
-TC008	Successfully search for a product
-TC009	Add a product to the shopping cart
-TC010	Navigate to "Contact Us" page
-Each test case ensures reliable automation and validates the UI behavior from a user perspective.
+## Contributing & Improvements
 
-Contributing & Improvements
-
-Feel free to fork and modify this project to:
-    Add more test cases.
-    Implement cross-browser testing.
-    Practice debugging and fixing automation cases issues
-    Enhance error handling & debugging.
+- Feel free to fork and modify this project to:
+    - Add more test cases.
+    - Implement cross-browser testing.
+    - Practice debugging and fixing automation cases issues
+    - Enhance error handling & debugging.
 
 
-Known_Issues:
-    TC009: 
-        Issue_description: The test case is not completed because there was a timeout error, the case was expecting a sub menu but it wasn't loaded.
-        Expected_Activity: User hovers over any item and clicks on the add to cart icon to successfully add an item to the shopping cart.
-        Current_Activity: The test case is not hovering over the item, therefore the submenu is not displayed.
-        Solution: find a way to add an additional action to target any item in the page and hover over the product to force display the menu.
+## Known_Issues:
+- TC009:
+    - Issue_description: The test case is not completed because there was a timeout error, the case was expecting a sub menu but it wasn't loaded.
+    - Expected_Activity: User hovers over any item and clicks on the add to cart icon to successfully add an item to the shopping cart.
+    - Current_Activity: The test case is not hovering over the item, therefore the submenu is not displayed.
+    - Solution: find a way to add an additional action to target any item in the page and hover over the product to force display the menu.
 
-    TC010:
-        Issue_description: The test case is not completed because there was a timeout error while being redirected, after redirection the test is validating the link where the user is being redirected.
-        Expected_pattern: /information\/special/.
-        Received_pattern: /product\/special/.
-        Solution: update the expected pattern in the document mockAutomation.spec.ts line 155 to match the production pattern.
+- TC010:
+    - Issue_description: The test case is not completed because there was a timeout error while being redirected, after redirection the test is validating the link where the user is being redirected.
+    - Expected_pattern: /information\/special/.
+    - Received_pattern: /product\/special/.
+    - Solution: update the expected pattern in the document mockAutomation.spec.ts line 155 to match the production pattern.
 
-License:
-This Playwright automation framework is open-source for learning and development purposes.
+## License:
+- This Playwright automation framework is open-source for learning and development purposes.
